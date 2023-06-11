@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div style="border: solid 6px rgb(153, 153, 153); border-radius: 20px; width: 850px; height: 500px; 
+background-color: rgb(31, 36, 41); margin-top: 100px; margin-left: 400px;">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+         <!-- кнопка -->
+        <button style="border: solid 4px #a9d1f3; margin-top: 90px; margin-left: 250px; width: 330px;
+        border-radius: 20px; background-color: #ff1c8e; ">
+
+        <a style="text-decoration: none; color: #a9d1f3; font-size: 1.3rem;" href="#">Ok</a>
+    
+    </button>
+    </form>
+    
+    <!-- имя пользователя -->
+    <!-- <div style="width: 740px; margin-top: 70px; margin-left: 50px;">
+        <h5 style="margin-left: 100px; color: white; display: inline-block;">Name -> </h5>
+
+        <input style="text-align: center; margin-left: 100px; display: inline-block; color: white; 
+        background-color: rgb(31, 36, 41); width: 330px; height: 50px; border: solid 3px #ff1c8e; 
+        border-radius: 20px;" type="text">
+
+    </div> -->
+
+    <!-- пароль пользователя -->
+    <!-- <div style="width: 740px; margin-top: 70px; margin-left: 50px;">
+        <h5 style="margin-left: 100px; color: white; display: inline-block;">Password -> </h5>
+        
+        <input style="text-align: center; margin-left: 70px; display: inline-block; color: white; 
+        background-color: rgb(31, 36, 41); width: 330px; height: 50px; border: solid 3px #ff1c8e; 
+        border-radius: 20px;" type="password">
+
+    </div> -->
+
+    разьяснения и т.д.
+    <div style="width: 740px; margin-top: 40px; margin-left: 290px;">
+        <a style="color: white;" href="#">Dont have an account ? | create it !</a>
+    </div>
+
+    
+        
+</div>
+{% endblock main %}

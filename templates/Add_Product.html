@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block main %}
+
+<form action="{% url 'add_product_card-page' %}" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    <div style="border: solid 6px rgb(153, 153, 153); border-radius: 20px; width: 1100px; height: 650px;
+    background-color: rgb(31, 36, 41); margin-top: 50px; margin-left: 300px;">
+    
+        <!-- имя карты -->
+        <div style="display: inline-flex; border: 3px solid #fa429e; width: 390px; height: 50px; border-radius: 20px; margin-top: 30px; margin-left: 30px;">
+            <h4 style="display: inline-block; color: white; padding-left: 10px; padding-top: 6px;">{{ form.Product_name.label }} :</h4>
+            <div style="display: inline-block; padding-top: 7px; padding-left: 8px;">{{ form.Product_name }}</div>
+            <div class="form-error">{{ form.Product_name.errors }}</div>
+        </div>
+        
+        <!-- photo -->
+        <div style="display: inline-flex; border: 3px solid #0862b1; width: 500px; height: 50px; border-radius: 20px; margin-top: 30px; margin-left: 130px;">
+            <h4 style="display: inline-block; color: white; padding-left: 10px; padding-top: 6px;">Photo :</h4>
+            <div style="display: inline-block; margin-left: 110px; padding-top: 7px; color: white;">{{ form.Product_photo }}</div>
+            <div class="form-error">{{ form.Product_photo.errors }}</div>
+        </div>
+
+        <!-- slug -->
+        <div style="display: inline-flex; border: 3px solid #fa429e; width: 390px; height: 50px; border-radius: 20px; margin-top: 30px; margin-left: 30px;">
+            <h4 style="color: white; padding-left: 10px; padding-top: 6px;">Category type :</h4>
+                <div style="position: absolute; margin-left: 185px; padding-top: 7px;">{{ form.Slug }}</div>
+            <div class="form-error">{{ form.Slug.errors }}</div>
+        </div>
+
+        <!-- Product_published -->
+        <div style="display: inline-flex; border: 3px solid #0862b1; width: 500px; height: 50px; border-radius: 20px; margin-top: 30px; margin-left: 130px;">
+            <h4 style="display: inline-block; color: white; padding-left: 10px; padding-top: 6px;">{{ form.Product_published.label }} :</h4>
+            <div style="display: inline-block; margin-left: 110px; padding-top: 9px; color: white;">{{ form.Product_published }}</div>
+            <div class="form-error">{{ form.Product_published.errors }}</div>
+        </div>
+        
+        <!-- Catgory_id -->
+        <div style="display: inline-flex; border: 3px solid #0862b1; width: 500px; height: 50px; border-radius: 20px; margin-top: 30px; margin-left: 558px;">
+            <h4 style="display: inline-block; color: white; padding-left: 10px; padding-top: 6px;">{{ form.Category_id.label }} :</h4>
+            <div style="display: inline-block; margin-left: 110px; padding-top: 9px; color: white;">{{ form.Category_id }}</div>
+            <div class="form-error">{{ form.Category_id.errors }}</div>
+        </div>
+        
+        <!-- description -->
+        <div style="display: inline-block; border: 3px solid #fa429e; width: 390px; height: 260px; border-radius: 20px; margin-top: 30px; margin-left: 30px;">
+            <h4 style=" color: white; padding-left: 10px; padding-top: 6px;">{{ form.Product_description.label }} :</h4>
+            <div style="margin-left: 10px;">{{ form.Product_description }}</div>
+            <div class="form-error">{{ form.Product_description.errors }}</div>
+        </div>
+
+        <!-- кнопка -->
+            <button style=" background-color: rgb(31, 36, 41); display: inline-flex; border: 5px double #0862b1; width: 400px; height: 54px; border-radius: 20px; margin-top: 30px; margin-left: 180px;" type="submit">
+                <h5 style="color: #ff99cc; padding-left: 110px; padding-top: 9px;">ADD_NEW_CARD</h5>
+            </button>
+
+        
+    
+    </div>
+
+
+
+</form>
+{% endblock main %}
+
+

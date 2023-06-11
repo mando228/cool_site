@@ -1,0 +1,37 @@
+      html, body{
+        height: 100%;
+      }
+      body{
+        margin: 0;
+
+        background: linear-gradient(to right, #4ca4f1, #ff1c8e, #ff8fc7) no-repeat;
+        /* background-size: 200%, 300%; */
+        animation: gradient 30s ease infinite;
+      }
+      @keyframes gradient{
+        0%{
+          /* background-position: 0 45% 55%; */
+          background-size: 200% 200%, 300%;
+
+        }
+        20%{
+          /* background-position: 30% 30% 40%; */
+          background-size: 150% 150%, 300%;
+        }
+        40%{
+          /* background-position: 0 45% 55%; */
+          background-size: 150% 200%, 300%;
+        }
+        60%{
+          /* background-position: 0 45% 55%; */
+          background-size: 200% 200%, 250%;
+        }
+        80%{
+          /* background-position: 0 45% 55%; */
+          background-size: 100% 400%, 200%;
+        }
+        100%{
+          /* background-position: 0 45% 55%; */
+          background-size: 200% 200%, 300%;
+        }      
+      }

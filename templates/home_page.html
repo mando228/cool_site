@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load mysite_tags %}
+
+{% block main %}
+
+<div style=" width: 240px; display: inline-flex; position: fixed;" >
+    <div style="border: solid 6px #707070; border-left: none; border-radius: 20px; width: 200px; height: 700px; margin-top: 10px; background-color: rgb(31, 36, 41);">
+        <!-- аватарка -->
+        <div style="border: solid 2px #ff1c8e; background-color: rgb(153, 153, 153); width: 130px; height: 130px; border-radius: 100%; margin-top: 25px; margin-left: 25px;"></div>
+        <!-- имя пользователя -->
+        <div style="width: 190px;">
+            <h4 style="color: #ff1c8e; text-align: center;" >Barsuk Evgesha</h4>
+        </div>
+        <div style="border-top: solid 4px #ff1c8e;"></div>
+        <!-- корзина и счетчик товаров -->
+        <div style="margin-top: 40px; width: 190px;">
+            <h4 style="color: #4ca4f1; text-align: center;" >product count : </h4>
+            <h2 style="color: #4ca4f1; text-align: center;">4</h2>
+        </div>
+        <div style="margin-left: 20px; margin-top: 40px; width: 145px; border-top: solid 4px #4ca4f1;"></div>
+        <!-- разьяснительный текст и разьяснения -->
+        <div style="margin-top: 20px; width: 190px;">
+            <h5 style="color: #4ca4f1; text-align: center;" >you can go to your profil by clicking on username</h5>
+        </div>
+        <!-- выйти -->
+        <div style="margin-top: 160px; width: 190px;">
+            <button style="border: solid 4px #a9d1f3; margin-left: 25px; width: 145px;
+            border-radius: 20px; background-color: #ff1c8e; ">
+                <a style="text-decoration: none; color: #a9d1f3; font-size: 1.3rem;" href="#">Exit</a>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ---------------------------------------------------------------------------------------- -->
+<div style="border: 2px solid red; display: inline-block; margin-left: 300px; width: 1400px; height: 740px;">
+    <div style="border: 2px solid blue; width: 1100px; height: 740px; display: inline-block;">
+        <!-- карточка с информацие от models -->
+        {% for product_card in product_card_list %}
+        <div class="card text-bg-dark mb-3" style="width: 300px; height: 2--px; display: inline-block; margin-left: 50px; margin-top: 40px;">
+            <div class="card-body">
+            <h5 class="card-title">{{ product_card.Product_name }}</h5>
+            <p class="card-text">{{ product_card.Product_description }}</p>
+            <a href="#" class="btn btn-primary">Add to the basket</a><div style="padding-top: 5px; color: #ff7abd;">category : {{ product_card.Category_id }}</div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    
+
+
+<!-- ---------------------------------------------------------------------------------------- -->
+
+<!-- эт кароч функция из templatetags и она передает все категории в categories_list.html которая в свою очередь эти категории 
+передает сюда, на home-page страницу -->
+{% show_catigory_box %}
+
+</div>
+
+{% endblock main %}
+
+
