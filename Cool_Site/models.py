@@ -16,7 +16,7 @@ class Card_Product(models.Model):
     Category_id = models.ForeignKey('Card_Category', on_delete=models.PROTECT)
     Slug = models.SlugField(max_length=30, verbose_name="URL")
 
-
+ 
     def __str__(self):
         return f" {self.Product_name} | category -> {self.Category_id}" 
 
