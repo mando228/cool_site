@@ -19,3 +19,5 @@ admin.site.register(Card_Product, Card_Product_Admin)
 
 admin.site.register(Card_Category, Card_Category_Admin)
 
+admin.site.register(Users)
+

@@ -10,7 +10,7 @@
     
         <!-- имя карты -->
         <div style="display: inline-flex; border: 3px solid #fa429e; width: 390px; height: 50px; border-radius: 20px; margin-top: 30px; margin-left: 30px;">
-            <h4 style="display: inline-block; color: white; padding-left: 10px; padding-top: 6px;">{{ form.Product_name.label }} :</h4>
+            <h4 style="display: inline-block; color: white; padding-left: 10px; padding-top: 6px;">Product name :</h4>
             <div style="display: inline-block; padding-top: 7px; padding-left: 8px;">{{ form.Product_name }}</div>
             <div class="form-error">{{ form.Product_name.errors }}</div>
         </div>
@@ -31,24 +31,34 @@
 
         <!-- Product_published -->
         <div style="display: inline-flex; border: 3px solid #0862b1; width: 500px; height: 50px; border-radius: 20px; margin-top: 30px; margin-left: 130px;">
-            <h4 style="display: inline-block; color: white; padding-left: 10px; padding-top: 6px;">{{ form.Product_published.label }} :</h4>
+            <h4 style="display: inline-block; color: white; padding-left: 10px; padding-top: 6px;">Product published :</h4>
             <div style="display: inline-block; margin-left: 110px; padding-top: 9px; color: white;">{{ form.Product_published }}</div>
             <div class="form-error">{{ form.Product_published.errors }}</div>
         </div>
         
         <!-- Catgory_id -->
         <div style="display: inline-flex; border: 3px solid #0862b1; width: 500px; height: 50px; border-radius: 20px; margin-top: 30px; margin-left: 558px;">
-            <h4 style="display: inline-block; color: white; padding-left: 10px; padding-top: 6px;">{{ form.Category_id.label }} :</h4>
+            <h4 style="display: inline-block; color: white; padding-left: 10px; padding-top: 6px;">Category id :</h4>
             <div style="display: inline-block; margin-left: 110px; padding-top: 9px; color: white;">{{ form.Category_id }}</div>
             <div class="form-error">{{ form.Category_id.errors }}</div>
         </div>
         
+        <!-- цена -->
+        <div style="position: absolute; border: 3px solid #ff9239; width: 390px; height: 50px; border-radius: 20px;  margin-top: 50px; margin-left: 558px;">
+            <h4 style="color: white; padding-left: 10px; padding-top: 6px;">Product price :</h4>
+            <div style="position: absolute; margin-left: 180px; margin-top: -36px;">{{ form.Product_price }}</div>
+            <div class="form-error">{{ form.Product_price.errors }}</div>
+        </div>
+
         <!-- description -->
         <div style="display: inline-block; border: 3px solid #fa429e; width: 390px; height: 260px; border-radius: 20px; margin-top: 30px; margin-left: 30px;">
-            <h4 style=" color: white; padding-left: 10px; padding-top: 6px;">{{ form.Product_description.label }} :</h4>
+            <h4 style=" color: white; padding-left: 10px; padding-top: 6px;">Product description :</h4>
             <div style="margin-left: 10px;">{{ form.Product_description }}</div>
             <div class="form-error">{{ form.Product_description.errors }}</div>
         </div>
+
+        
+
 
         <!-- кнопка -->
             <button style=" background-color: rgb(31, 36, 41); display: inline-flex; border: 5px double #0862b1; width: 400px; height: 54px; border-radius: 20px; margin-top: 30px; margin-left: 180px;" type="submit">

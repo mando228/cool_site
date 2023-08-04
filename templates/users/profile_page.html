@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block main %}
+{% load static %}
+<style>
+    .my_user_photo_field{
+        width: 40px;
+        height: 30px;
+        background-color: #1a7fe4;
+        margin-left: 60px;
+        margin-top: 6px;
+        font-size: 0;
+      }
+      .my_user_fname_field{
+        float: right;
+        margin-right: 15px; 
+        color: #85c6ff; 
+        background-color: #1f2429;
+        border: 1px solid rgb(31, 36, 41);
+        text-align: center;
+        font-weight: 500;
+      }
+      .my_user_lname_field{
+        float: right;
+        margin-right: 15px; 
+        color: #ff83c1; 
+        background-color: rgb(31, 36, 41);
+        border: 1px solid rgb(31, 36, 41);
+        text-align: center;
+        font-weight: 500;
+      }
+</style>
+
+<form action="" method="post" enctype="multipart/form.data">
+{% csrf_token %}
+
+    <div style="border-radius: 100%; position: absolute; border: solid 6px rgb(31, 36, 41); 
+    width: 170px; height: 170px; margin-left: 764px; margin-top: -90px;">
+        <img style="border-radius: 100%; width: 160px; height: 160px;" src="
+            {% if user.user_photo %}
+            {{ user.user_photo.url }}
+            {% else %}
+            {% static 'cool_site\images\user_default\default_user.jpg' %}
+            {% endif %}
+        ">
+       
+        <a href="{{ form.user_photo }}">
+            <i class="bi bi-camera2" style="font-size: 35px; color: #ff83c1;
+            margin-left: 60px;"></i>
+
+         </a>   
+    
+    </div>    
+    
+    <!-- 0000000000000000000000000000000000000000000000 -->
+
+    <div style="border: solid 6px rgb(153, 153, 153); border-radius: 20px; width: 1100px; height: 520px;
+    background-color: rgb(31, 36, 41); margin-top: 130px; margin-left: 300px;"> 
+        <!-- первое имя -->
+        <div style="position: absolute; border: 3px solid #fa429e; width: 420px; height: 50px; border-radius: 20px; margin-top: 120px; margin-left: 60px;">
+            <h4 style="color: white; padding-left: 10px; padding-top: 6px;">First name :</h4>
+                <h5 style="float: right; margin-right: 15px; color: #85c6ff; margin-top: -34px;">{{ form.first_name }}</h5>
+        </div>
+
+        <!-- второе имя -->
+        <div style="position: absolute; border: 3px solid #0862b1; width: 420px; height: 50px; border-radius: 20px; margin-top: 120px; margin-left: 610px;">
+            <h4 style="color: white; padding-left: 10px; padding-top: 6px;">Last name :</h4>
+                <h5 style="float: right; margin-right: 15px; color: #ff83c1; margin-top: -34px;">{{ form.last_name }}</h5>
+        </div>
+
+        <!-- email -->
+        <div style="position: absolute; border: 3px solid #0862b1; width: 420px; height: 50px; border-radius: 20px; margin-top: 270px; margin-left: 60px;">
+            <h4 style="color: white; padding-left: 10px; padding-top: 6px;">Email :</h4>
+                <h5 style="float: right; margin-right: 60px; color: #ff83c1; margin-top: -34px;">{{ user.email }}</h5>
+        </div>
+
+        <!-- user-name -->
+        <div style="position: absolute; border: 3px solid #fa429e; width: 420px; height: 50px; border-radius: 20px; margin-top: 270px; margin-left: 610px;">
+            <h4 style="color: white; padding-left: 10px; padding-top: 6px;">Username :</h4>
+                <h5 style="float: right; margin-right: 110px; color: #85c6ff; margin-top: -34px;">{{ user.username }}</h5>
+        </div>
+
+        
+
+        <!-- кнопка -->
+        <button style=" background-color: rgb(31, 36, 41); position: absolute; border: 5px double #0862b1; width: 400px; height: 54px; border-radius: 20px; margin-top: 410px; margin-left: 340px;" type="submit">
+            <h5 style="color: #ff99cc; margin-top: 4px;">SAVE_CHANGES</h5>
+        </button>
+    
+    </div>
+</form>
+
+
+<!-- ------------------------------------------------------------------------------------------- -->
+
+<!-- корзина -->
+<div style="border: 3px solid black; border-left: none; border-right: none; width: 1400px;
+ margin-top: 90px; margin-left: 160px;">
+{% if basket_product %}
+    {% for basket_card in basket_product %}
+<!-- выбранный продукт -->
+    <div class="card text-bg-dark mb-3" style="width: 420px; display: inline-block; margin-left: 30px; margin-top: 15px;">
+        <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ basket_card.B_product.Product_photo.url }}" class="img-fluid rounded-start">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h5 class="card-title">{{ basket_card.B_product.Product_name }}</h5>
+            <div style="border: 2px solid #000000;"></div>
+            <a href="{% url 'basket_del' basket_card.id %}">
+                <i class="bi bi-trash3-fill" style="position: absolute; margin-top: -43px; margin-left: 230px; color: #85c6ff;"></i>
+            </a>
+            <p class="card-text">{{ basket_card.B_product.Product_description}}</p>
+            <p class="card-text" style="position: absolute; margin-top: -10px; color: #ffc400;">{{ basket_card.B_product.Product_price}} $ * &nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  = {{basket_card.card_quantity_sum}} $</p>
+            
+            <p class="card-text" style="position: absolute; margin-top: -10px; margin-left: 76px; color: #fa429e;">
+                {% if basket_card.B_product.Product_price > 999 %}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{basket_card.quantity}} p.
+                {% elif basket_card.quantity == 1 %}
+                {{basket_card.quantity}} piece
+                {% else %}
+                {{basket_card.quantity}} pieces
+                {% endif %}
+            </p>
+        </div>
+        </div>
+        </div>
+    </div>
+
+<!-- общее количество вещей -->
+<div style="position: absolute; margin-top: -278px; width: 270px; height: 70px; background-color: #1f2429;
+color: #ff83c1; font-size: 20px; padding-top: 20px; border-radius: 16px; border-bottom-left-radius: 0; 
+border-bottom-right-radius: 0; text-align: center; border: 3px solid black; border-bottom: none;">
+    TOTAL : {{basket_product.all_busket_quantity}} pieces
+</div>
+
+<!-- общая цена всех вещей -->
+<div style="position: absolute; margin-left: 1100px; width: 300px; height: 70px; background-color: #1f2429;
+color: #85c6ff; font-size: 20px; padding-top: 20px; border-radius: 16px; border-top-left-radius: 0; 
+border-top-right-radius: 0; text-align: center; border: 3px solid black; border-top: none;">
+    TOTAL PRICE : {{basket_product.all_basket_price}} $
+</div>
+
+    {% endfor %}
+{% else %}
+    <h2 style="color: black;">Basket is blank</h2>
+</div>
+{% endif %}
+
+
+{% endblock main %}
