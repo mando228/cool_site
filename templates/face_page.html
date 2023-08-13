@@ -2,27 +2,25 @@
 
 
 {% block main %}
-<div style="border: solid 6px #707070; width: 600px; height: 300px; border-radius: 20px; margin-top: 40px; margin-left: 30px; background-color: rgb(39, 39, 39);">
-    <h1 style="padding-left: 20px; padding: 20px; color: #ff1c8e" >Wellcome to our site</h1>
-    <h5 style="padding-left: 20px; padding: 20px; color: #c4e3ff">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+<div class="big-block-1">
+    <h1 class="big-text-1" >Wellcome to our site</h1>
+    <h5 class="small-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.
          Deserunt totam dolorem quo vitae sequi.
          Alias iste odio nemo quos temporibus <br><br><br>  
          Ad a tenetur eos libero fuga, pariatur id necessitatibus vel!</h3>
 </div>
 {% if not request.user.is_authenticated %}
-<div style="border: solid 6px #707070; width: 320px; height: 200px; border-radius: 20px; margin-top: 40px; margin-left: 30px; background-color: rgb(39, 39, 39);">
-    <h1 style="padding-left: 20px; padding: 20px; color: #ff1c8e" >register soon !</h1>
-    <button style="border: solid 4px #a9d1f3; margin-left: 20px; padding: 5px; width: 260px;
-    border-radius: 20px; background-color: #ff1c8e; ">
-        <a style="text-decoration: none; color: #a9d1f3; font-size: 2rem;" href="{% url 'login-page' %}">Login</a>
+<div class="big-block-2">
+    <h1 class="big-text-2">register soon !</h1>
+    <button class="button">
+        <a class="button-text" href="{% url 'login-page' %}">Login</a>
     </button>
 </div>
 {% else %}
-<div style="border: solid 6px #707070; width: 520px; height: 230px; border-radius: 20px; margin-top: 40px; margin-left: 30px; background-color: rgb(39, 39, 39);">
-    <h2 style="padding-left: 20px; padding: 20px; color: #ff1c8e" >Cool ! You have registered. <br> Now you can use our site</h2>
-    <button style="border: solid 4px #a9d1f3; margin-left: 20px; padding: 2px; width: 350px;
-    border-radius: 20px; background-color: #ff1c8e; ">
-        <a style="text-decoration: none; color: #a9d1f3; font-size: 2rem;" href="{% url 'home-page' %}">Go to home page</a>
+<div class="big-block-2">
+    <h2 class="big-text-2" >Cool ! You have registered. <br> Now you can use our site</h2>
+    <button class="button">
+        <a class="button-text" href="{% url 'home-page' %}">Go to home page</a>
     </button>
 </div>
 {% endif %}

@@ -18,6 +18,12 @@ class Add_Card_Product_forms(forms.ModelForm):
     
 
 class RegisterUserForm(UserCreationForm):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'my-field-pink-reg'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'my-field-blue-reg'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':'my-field-pink-reg'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'my-field-blue-reg'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'my-field-pink-reg'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'my-field-blue-reg'}))
     class Meta:
         model = Users
         fields = {'first_name', 'last_name', 'username', 'email', 'password1', 'password2', }
@@ -40,8 +46,8 @@ class ContactUserForm(forms.Form):
 
 class ProfilUserForm(UserChangeForm):
     user_photo = forms.ImageField(widget=forms.FileInput(attrs={'class':'my_user_photo_field'}))
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'my_user_fname_field'}))
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'my_user_lname_field'}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'my-field-blue'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'my-field-pink'}))
     class Meta:
         model = Users
         fields = {'first_name', 'last_name', 'user_photo', 'username', 'email', }

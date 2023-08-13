@@ -61,7 +61,7 @@ class Basket_Query_Set(models.QuerySet):
 
 class Card_Basket(models.Model):
     B_user = models.ForeignKey(to=Users, on_delete=models.CASCADE)
-    B_product = models.ForeignKey(to=Card_Product, on_delete=models.CASCADE)
+    B_product = models.ForeignKey(to=Card_Product, on_delete=models.CASCADE) 
     quantity = models.PositiveSmallIntegerField(default=0)
     objects = Basket_Query_Set.as_manager()
 

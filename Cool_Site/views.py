@@ -11,6 +11,8 @@ from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, CreateView, UpdateView
 from django.views.generic.edit import FormView
 
+from django.contrib.auth.decorators import login_required
+
 from .models import *
 from .forms import *
 
@@ -32,7 +34,6 @@ class Home_Page_View(ListView):
          return Card_Product.objects.filter(Product_published=True)
 
 
-
 class Show_Category_View(ListView):
     paginate_by = 3
     model = Card_Product
@@ -47,7 +48,6 @@ class Show_Category_View(ListView):
         context = super().get_context_data(**kwargs)
         context['cat_selected'] = context['product_card_list'][0].Category_id
         return context
-
 
 
 
@@ -94,7 +94,6 @@ def Logout_User(request):
     logout(request)
     return redirect('face-page')
 
-
 class Contact_User_View(FormView):
     form_class = ContactUserForm
     template_name = 'users/contact_page.html'
@@ -104,7 +103,6 @@ class Contact_User_View(FormView):
         print(form.cleaned_data)
         return redirect('home-page')
 
-
 class Profil_User_View(UpdateView):
     model = Users
     form_class = ProfilUserForm
@@ -112,27 +110,28 @@ class Profil_User_View(UpdateView):
 
     # эт чобы можно было сохранить изменения профиля
     def get_success_url(self):
-        return reverse_lazy('profile-page', args=(self.object.id, ))
+        return reverse_lazy('profile-page', args=(self.user.id, ))
 
     def get_context_data(self, **kwargs):
         context =  super(Profil_User_View, self).get_context_data(**kwargs)
         context['basket_product'] = Card_Basket.objects.filter(B_user=self.object)
         return context
     
-
+@login_required
 def Add_Basket_View(request, product_id):
     bought_product = Card_Product.objects.get(id=product_id)
-    baskets = Card_Basket.objects.filter(B_user=request.user, B_product=bought_product)
+    basket_first = Card_Basket.objects.filter(B_user=request.user, B_product=bought_product)
 
-    if not baskets.exists():
+    if not basket_first.exists():
         Card_Basket.objects.create(B_user=request.user, B_product=bought_product, quantity=1)
     else:
-        basket = baskets.first()
-        basket.quantity += 1
-        basket.save()
+        basket_second = basket_first.first()
+        basket_second.quantity += 1
+        basket_second.save()
 
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
+@login_required
 def Delete_Basket_View(request, basket_id):
     baskets = Card_Basket.objects.get(id=basket_id)
     baskets.delete()

@@ -5,40 +5,39 @@
 <form action="" method="post">
     {% csrf_token %}
 
-    <div style="border: solid 6px rgb(153, 153, 153); border-radius: 20px; width: 1100px; height: 650px;
-    background-color: rgb(31, 36, 41); margin-top: 50px; margin-left: 300px;"> 
+    <div class="registerbig-block"> 
 
             <!-- первое имя пользователя -->
-            <div style="position: fixed; border: 3px solid #fa429e; width: 480px; height: 50px; border-radius: 20px; margin-top: 50px; margin-left: 30px;">
-                <h5 style="margin-top: 8px; margin-left: 50px; color: white; display: inline-block;">Name :</h5>
+            <div class="register-firstname-border">
+                <h5 class="register-border-text">Name :</h5>
         
-                <label style="margin-left: 108px;" for="{{ form.first_name.id_for_label }}">{{form.first_name}}</label>
+                <label for="{{ form.first_name.id_for_label }}">{{form.first_name}}</label>
                 <div class="form-error">{{ form.errors }}</div>
             </div>
 
-            <!-- второе имя пользователя -->
-            <div style="position: fixed; border: 3px solid #0862b1; width: 480px; height: 50px; border-radius: 20px; margin-top: 50px; margin-left: 580px;">
-                <h5 style="margin-top: 8px; margin-left: 50px; color: white; display: inline-block;">Surname :</h5>
+            <!-- второе имя пользователя -->    
+            <div class="register-lastname-border">
+                <h5 class="register-border-text">Surname :</h5>
         
-                <label style="margin-left: 86px;" for="{{ form.last_name.id_for_label }}">{{form.last_name}}</label>
+                <label for="{{ form.last_name.id_for_label }}">{{form.last_name}}</label>
                 <div class="form-error">{{ form.errors }}</div>
             </div>
         
         
             <!-- email  -->
-            <div style="position: fixed; border: 3px solid #0862b1; width: 480px; height: 50px; border-radius: 20px; margin-top: 180px; margin-left: 30px;">
-                <h5 style="margin-top: 8px; margin-left: 50px; color: white; display: inline-block;">Email :</h5>
+            <div class="register-email-border">
+                <h5 class="register-border-text">Email :</h5>
         
-                <label style="margin-left: 112px;" for="{{ form.email.id_for_label }}">{{form.email}}</label>
+                <label for="{{ form.email.id_for_label }}">{{form.email}}</label>
                 <div class="form-error">{{ form.errors }}</div>
             </div>
 
              
             <!-- имя пользователя (user_name) -->
-            <div style="position: fixed; border: 3px solid #fa429e; width: 480px; height: 50px; border-radius: 20px; margin-top: 180px; margin-left: 580px;">
-                <h5 style="margin-top: 8px; margin-left: 50px; color: white; display: inline-block;">User-name :</h5>
+            <div class="register-username-border">
+                <h5 class="register-border-text">User-name :</h5>
         
-                <label style="margin-left: 70px;" for="{{ form.username.id_for_label }}">{{form.username}}</label>
+                <label for="{{ form.username.id_for_label }}">{{form.username}}</label>
                 <div class="form-error">{{ form.errors }}</div>
             </div>
 
@@ -46,20 +45,20 @@
              
             <!-- пароль  -->
     
-            <div style="position: fixed; border: 3px solid #fa429e; width: 480px; height: 50px; border-radius: 20px; margin-top: 310px; margin-left: 30px;">
-                <h5 style="margin-top: 8px; margin-left: 50px; color: white; display: inline-block;">Password N1 :</h5>
+            <div class="register-password1-border">
+                <h5 class="register-border-text">Password N1 :</h5>
         
-                <label style="margin-left: 50px;" for="{{ form.password1.id_for_label }}">{{form.password1}}</label>
+                <label for="{{ form.password1.id_for_label }}">{{form.password1}}</label>
                 <div class="form-error">{{ form.errors }}</div>
             </div>
 
 
 
             <!-- повторный пароль -->
-            <div style="position: fixed; border: 3px solid #0862b1; width: 480px; height: 50px; border-radius: 20px; margin-top: 310px; margin-left: 580px;">
-                <h5 style="margin-top: 8px; margin-left: 50px; color: white; display: inline-block;">Password N2 :</h5>
+            <div class="register-password2-border">
+                <h5 class="register-border-text">Password N2 :</h5>
         
-                <label style="margin-left: 50px;" for="{{ form.password2.id_for_label }}">{{form.password2}}</label>
+                <label for="{{ form.password2.id_for_label }}">{{form.password2}}</label>
                 <div class="form-error">{{ form.errors }}</div>
             </div>
 
@@ -67,15 +66,12 @@
         <!-- кнопка -->
         
 
-            <button style="border: solid 4px #a9d1f3; margin-top: 460px; margin-left: 310px; height: 40px; 
-            width: 430px; font-size: 1.3rem; border-radius: 20px; color: #a9d1f3; background-color: #ff1c8e;" type="submit">
+            <button class="reg-button" type="submit">
                 Already
             </button>
             
             <!-- разьяснения и т.д. -->
-            <div style="width: 740px; margin-top: 40px; margin-left: 370px;">
-                <a style="color: white;" href="{% url 'login-page' %}">Do you already have an account ? | Login !</a>
-            </div>
+                <a class="reg-link" href="{% url 'login-page' %}">Do you already have an account ? | Login !</a>
         
     </div>
 

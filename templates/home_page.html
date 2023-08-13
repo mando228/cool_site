@@ -1,56 +1,45 @@
 {% extends "base.html" %}
 {% load mysite_tags %}
-
 {% block main %}
 
-<div style=" width: 240px; display: inline-flex; position: fixed;" >
-    <div style="border: solid 6px #707070; border-left: none; border-radius: 20px; width: 200px; height: 700px; margin-top: 10px; background-color: rgb(31, 36, 41);">
+<div class="home-main-block">
+    <div class="home-profil-block">
         <!-- аватарка -->
-        <div style="border: solid 2px #ff1c8e; background-color: rgb(153, 153, 153); width: 130px; height: 130px; border-radius: 100%; margin-top: 25px; margin-left: 25px;"></div>
+        <div class="home-ava"></div>
         <!-- имя пользователя -->
-        <div style="width: 190px;">
-        <a href="{% url 'profile-page' user.id %}" style="text-decoration: none;"><h4 style="color: #ff1c8e; text-align: center;" >{{ user.username }}</h4></a>
-        </div>
-        <div style="border-top: solid 4px #ff1c8e;"></div>
+        <a href="{% url 'profile-page' user.id %}" class='home-link-style'><h4 class="home-username" >{{ user.username }}</h4></a>
+        <div class="home-small-line"></div>
         <!-- корзина и счетчик товаров -->
-        <div style="margin-top: 40px; width: 190px;">
-            <h4 style="color: #4ca4f1; text-align: center;" >product count : </h4>
-            <h2 style="color: #4ca4f1; text-align: center;">4</h2>
-        </div>
-        <div style="margin-left: 20px; margin-top: 40px; width: 145px; border-top: solid 4px #4ca4f1;"></div>
+            {% if basket_product %}
+                <h4 class="home-products-count">bought products count : </h4>
+                <h2 class="home-products-count">{{ basket_product.all_busket_quantity }}</h2>
+            {% else %}
+                <h4 class="home-products-count-non">basket is blank </h4>
+            {% endif %}    
+        <div class="home-small-line2"></div>
         <!-- разьяснительный текст и разьяснения -->
-        <div style="margin-top: 20px; width: 190px;">
-            <h5 style="color: #4ca4f1; text-align: center;" >you can go to your profil by clicking on username</h5>
-        </div>
+            <h5 class="home-small-text">you can go to your profil by clicking on username</h5>
         <!-- выйти -->
-        <div style="margin-top: 160px; width: 190px;">
-            <button style="border: solid 4px #a9d1f3; margin-left: 25px; width: 145px;
-            border-radius: 20px; background-color: #ff1c8e; ">
-            <a style="text-decoration: none; color: #a9d1f3; font-size: 1.3rem;" href="{% url 'logout' %}">Exit</a>
+            <button class="home-button-logout">
+            <a class="home-button-logout-text" href="{% url 'logout' %}">Exit</a>
             </button>
-        </div>
     </div>
-</div>    
-
 
 <!-- ---------------------------------------------------------------------------------------- -->
-<div style="border: 2px solid red; display: inline-block; margin-left: 290px; width: 1390px; height: 700px;">
-    <div style="border: 2px solid blue; width: 1070px; height: 700px; display: inline-block;">
-        <!-- карточка с информацие от models -->
+    <div class="home-main-block-card">
+        <!-- карточка с товарами -->
         {% for product_card in product_card_list %}
-        <div class="card text-bg-dark mb-3" style="width: 300px; height: 570px; display: inline-flex; margin-left: 50px; margin-top: 40px;">
+        <div class="card text-bg-dark mb-3 width-300px height-570px">
             <img style="width: 293px; height: 300px; object-fit: cover; margin-left: 2px; margin-top: 2px;" src="{{ product_card.Product_photo.url }}" alt="">
             <div class="card-body">
             <h5 class="card-title" style="border-bottom: 3px solid black; height: 60px;">{{ product_card.Product_name }}</h5>
             <p class="card-text" style="height: 110px;">{{ product_card.Product_description }}</p>
             <a href="{% url 'basket_add' product_card.id %}" class="btn btn-primary" >Add the basket</a>
-            <p class="card-text" style="color: #ffc400; font-size: 19px; position: absolute; margin-left: 164px; margin-top: -34px;">| {{ product_card.Product_price }} $</p>
-            
+            <p class="card-text" style="color: #ffc400; font-size: 19px; margin-left: 164px; margin-top: -34px;">| {{ product_card.Product_price }} $</p>
             </div>
         </div>
     {% endfor %}
     </div>
-
     
 
 
@@ -59,17 +48,22 @@
 <!-- эт кароч функция из templatetags и она передает все категории в categories_list.html которая в свою очередь эти категории 
 передает сюда, на home-page страницу -->
 {% show_catigory_box %}
-
 </div>
+
 
  <!-- пагинация -->
 
-{% if page_obj.has_other_pages %}
+
+{% endblock main %}
+
+
+<!-- ----------------------------------------------- -->
+<!-- {% if page_obj.has_other_pages %}
 
 <div style="border: 2px solid green; width: 420px; height: 50px; margin-left: 670px;">
-    <ul>
+    <ul> -->
         <!-- перемещаться на первую страницу -->
-        {% if page_obj.has_previous %}
+        <!-- {% if page_obj.has_previous %}
         <a style="text-decoration: none; " href="?page=1">
             <button style="display: inline-block; width: 50px; padding-top: 7px; text-align: center; height: 50px; color: white; background-color: rgb(39, 39, 39); margin-left: 10px; border-radius: 8px;">
                 <h3><<</h3>
@@ -90,10 +84,10 @@
         {% endif %}
         {% endif %}
         {% endfor %}
-        
+         -->
         
         <!-- перемещаться на последнию страницу -->
-        {% if page_obj.has_next %}
+        <!-- {% if page_obj.has_next %}
         <a style="text-decoration: none; " href="?page={{ page_obj.paginator.num_pages }}">
             <button style="display: inline-block; width: 50px; padding-top: 7px; text-align: center; height: 50px; color: white; background-color: rgb(39, 39, 39); margin-left: 10px; border-radius: 8px;">
                 <h3>>></h3>
@@ -105,10 +99,5 @@
                 
     </ul>
 </div>
-
 {% else %}
-{% endif %}
-
-{% endblock main %}
-
-
+{% endif %} -->

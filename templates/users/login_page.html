@@ -1,24 +1,23 @@
 {% extends "base.html" %}
 
 {% block main %}
-<div style="border: solid 6px rgb(153, 153, 153); border-radius: 20px; width: 850px; height: 500px; 
-background-color: rgb(31, 36, 41); margin-top: 100px; margin-left: 400px;">
+<div class="big-block-login">
     <form action="" method="post">
         {% csrf_token %}
     
 
 <!-- имя пользователя -->
 
-<div style="position: fixed; border: 3px solid #fa429e; width: 480px; height: 50px; border-radius: 20px; margin-top: 60px; margin-left: 70px;">
-    <h5 style="margin-top: 8px; margin-left: 50px; color: white; display: inline-block;">Username :</h5>
+<div class="login-username-border">
+    <h5 class="login-username">Username :</h5>
 
     <label style="margin-left: 50px;" for="{{ form.username.id_for_label }}">{{form.username}}</label>
 </div>
 
 <!-- пароль -->
 
-<div style="position: fixed; border: 3px solid #0862b1; width: 480px; height: 50px; border-radius: 20px; margin-top: 200px; margin-left: 290px;">
-    <h5 style="margin-top: 8px; margin-left: 50px; color: white; display: inline-block;">Password :</h5>
+<div class="login-password-border">
+    <h5 class="login-password">Password :</h5>
 
     <label style="margin-left: 50px;" for="{{ form.password.id_for_label }}">{{form.password}}</label>
 </div>
@@ -26,16 +25,13 @@ background-color: rgb(31, 36, 41); margin-top: 100px; margin-left: 400px;">
 
 
     <!-- кнопка -->
- <button style="border: solid 4px #a9d1f3; margin-top: 380px; margin-left: 210px; height: 40px; 
- width: 430px; font-size: 1.3rem; border-radius: 20px; color: #a9d1f3; background-color: #ff1c8e;" type="submit">
+ <button class="login-button" type="submit">
       Already
  </button>
     </form>
     
     <!-- разьяснения и т.д. -->
-    <div style="width: 740px; margin-top: 20px; margin-left: 300px;">
-        <a style="color: white;" href="{% url 'register-page' %}">Dont have an account ? | create it !</a>
-    </div>
+        <a class="login-link" href="{% url 'register-page' %}">Dont have an account ? | create it !</a>
 
     
         
